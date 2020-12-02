@@ -8,6 +8,6 @@
     <title>welcome to git</title>
 </head>
 <body>
-    <h1>Welcome to git</h1>
+    <h1>Welcome to git2</h1>
 </body>
 </html>
