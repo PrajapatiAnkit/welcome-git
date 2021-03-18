@@ -13,5 +13,5 @@ jobs:
         with:
           server-dir: public_html/work/welcome-git/
           server: ftp.codingbirdsonline.com
-          username: codingbi
-          password: u)0Xk%3Dl7
+          username: ${{ secrets.FTP_PASSWORD }}
+          password: ${{ secrets.FTP_USERNAME }}
