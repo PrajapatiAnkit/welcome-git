@@ -11,6 +11,6 @@ jobs:
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@4.0.0
         with:
-          server: ftp.codingbirdsonline.com
+          server: ftp.codingbirdsonline.com/public_html/work
           username: codingbi
           password: u)0Xk%3Dl7
