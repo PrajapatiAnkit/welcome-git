@@ -11,7 +11,10 @@ jobs:
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@2.0.0
         with:
-          server-dir: public_html/work/welcome-git/
-          server: ftp.codingbirdsonline.com
-          username: ${{secrets.FTP_USERNAME}}
-          password: ${{secrets.FTP_PASSWORD}}
+          FTP_SERVER: ftp.codingbirdsonline.com
+          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+          REMOTE_DIR: public_html/work/welcome-git/
+          METHOD: sftp
+          PORT: 22
+          ARGS: --verbose
