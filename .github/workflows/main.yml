@@ -1,20 +1,19 @@
-on: push
-name: 🚀 Deploy website on push
+name: CI -> Deploy to My website
+on:
+  push:
+    branches: [ local ]
 jobs:
-  web-deploy:
-    name: 🎉 Deploy
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: 🚚 Get latest code
-        uses: actions/checkout@v2.3.2
-
-      - name: 📂 Sync files
-        uses: SamKirkland/FTP-Deploy-Action@2.0.0
+      - uses: actions/checkout@v2
+      # Here is the deployment action
+      - name: Upload from public_html via FTP
+        uses: airvzxf/ftp-deployment-action@latest
         with:
-          FTP_SERVER: ${{ secrets.FTP_HOST }}
-          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
-          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
-          REMOTE_DIR: public_html/work/welcome-git/
-          METHOD: ftp
-          PORT: 21
-          ARGS: --verbose
+          server: ${{ secrets.FTP_HOST }}
+          user: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local_dir: "./public_html",
+          remote_dir: public_html/work/welcome-git/
+          delete: "false"
