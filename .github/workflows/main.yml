@@ -1,19 +1,17 @@
-name: CI -> Deploy to My website
-on:
-  push:
-    branches: [ main ]
+on: push
+name: Publish Website
 jobs:
-  build:
+  FTP-Deploy-Action:
+    name: FTP-Deploy-Action
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      # Here is the deployment action
-      - name: Upload from public_html via FTP
-        uses: airvzxf/ftp-deployment-action@latest
-        with:
-          server: ${{ secrets.FTP_HOST }}
-          user: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          local_dir: "./public_html",
-          remote_dir: public_html/work/welcome-git/
-          delete: "false"
+      - uses: actions/checkout@master
+      - name: FTP-Deploy-Action
+        uses: SamKirkland/FTP-Deploy-Action@2.0.0
+        env:
+          FTP_SERVER: ${{ secrets.FTP_HOST }}
+          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+          REMOTE_DIR: public_html/work/welcome-git/
+          ARGS: --delete
+          # --delete arg will delete files on the server if you've deleted them in git
