@@ -8,11 +8,7 @@
     <title>welcome to git</title>
 </head>
 <body>
-<<<<<<< HEAD
-    <h1>Welcome to testing</h1>
-=======
     <h1>Welcome to git22222222</h1>
->>>>>>> 33745649e19d65770fdaa0b4c120706ddd68a579
     <a href="https://codingbirdsonline.com">Go</a>
 </body>
 </html>
